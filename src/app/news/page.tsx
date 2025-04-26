@@ -3,12 +3,24 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { getNewsArticles, NewsArticle } from "@/services/news";
-import Image from "next/image";
 
-const NewsFeedPage = async () => {
-  const newsArticles: NewsArticle[] = await getNewsArticles();
+// Dummy data (you can replace this with your fetched data later)
+const newsArticles = [
+  {
+    title: "Breaking News 1",
+    summary: "This is a short summary of the first news article.",
+  },
+  {
+    title: "Breaking News 2",
+    summary: "This is a short summary of the second news article.",
+  },
+  {
+    title: "Breaking News 3",
+    summary: "This is a short summary of the third news article.",
+  },
+];
 
+const NewsFeedPage = () => {
   return (
     <motion.div
       className="container mx-auto py-12 px-6"
@@ -39,13 +51,6 @@ const NewsFeedPage = async () => {
                 <CardTitle>{article.title}</CardTitle>
               </CardHeader>
               <CardContent className="relative">
-                <Image
-                    src={article.imageUrl}
-                    alt={article.title}
-                    width={600}
-                    height={300}
-                    style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
-                />
                 <CardDescription className="mt-4">{article.summary}</CardDescription>
               </CardContent>
               <CardFooter>
