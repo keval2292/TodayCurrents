@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonProps } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 // Dummy data (you can replace this with your fetched data later)
@@ -54,7 +54,9 @@ const NewsFeedPage = () => {
                 <CardDescription className="mt-4">{article.summary}</CardDescription>
               </CardContent>
               <CardFooter>
-                <Button className="bg-primary text-background hover:bg-primary-foreground">Read More</Button>
+              <Button asChild className="bg-primary text-background hover:bg-primary-foreground">
+                  <a href="#">Read More</a>
+                </Button>
               </CardFooter>
             </Card>
           </motion.div>
