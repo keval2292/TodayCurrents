@@ -1,12 +1,12 @@
 "use client";
 
-import {Button} from '@/components/ui/button';
-import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
-import {Avatar, AvatarFallback, AvatarImage} from '@/components/ui/avatar';
-import {motion, AnimatePresence} from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import {useEffect, useState} from 'react';
-import {Info, Lightbulb, Newspaper, Search, Settings, Users} from "lucide-react";
+import { useEffect, useState } from 'react';
+import { Info, Lightbulb, Newspaper, Search, Settings, Users } from "lucide-react";
 
 const LandingPage = () => {
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -122,45 +122,45 @@ const LandingPage = () => {
             avatar: "https://randomuser.me/api/portraits/men/61.jpg"
         }
     ];
-    
+
 
     const iconSize = 20;
     const trendingTopics = [
         {
             title: 'Global Economy Shifts',
             summary: 'Experts predict major changes in global markets.',
-            icon: <Newspaper size={iconSize}/>
+            icon: <Newspaper size={iconSize} />
         },
         {
             title: 'AI Innovations',
             summary: 'New breakthroughs in artificial intelligence are reshaping industries.',
-            icon: <Lightbulb size={iconSize}/>
+            icon: <Lightbulb size={iconSize} />
         },
         {
             title: 'Climate Change Progress',
             summary: 'Recent policies show positive impact on climate goals.',
-            icon: <Info size={iconSize}/>
+            icon: <Info size={iconSize} />
         },
         {
             title: 'Space Exploration Update',
             summary: 'Latest missions reveal new insights into our solar system.',
-            icon: <Search size={iconSize}/>
+            icon: <Search size={iconSize} />
         },
     ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial(prev => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentTestimonial(prev => (prev + 1) % testimonials.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [testimonials.length]);
     const cardVariants = {
-        hidden: {opacity: 0, y: 50},
-        visible: {opacity: 1, y: 0, transition: {duration: 0.5}},
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
     };
 
     const containerVariants = {
-        hidden: {opacity: 0},
+        hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
@@ -173,59 +173,71 @@ const LandingPage = () => {
         <div className="container mx-auto px-4 py-12">
             {/* Hero Section */}
             <section className="relative overflow-hidden bg-light-gray mb-24 rounded-3xl">
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo to-sky-blue opacity-10 animate-pulse"></div>
+                <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-sky-500 opacity-10"
+                    animate={{
+                        backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],  // Create a sliding effect
+                    }}
+                    transition={{
+                        duration: 5,  // Control speed of the animation
+                        repeat: Infinity,  // Repeat the animation infinitely
+                        ease: "linear",  // Smooth linear movement
+                    }}
+                    style={{ backgroundSize: "200%" }}
+                ></motion.div>
                 <div className="relative z-10 flex flex-col items-center justify-center text-center py-24 px-6">
                     <motion.h1
                         className="text-5xl md:text-6xl lg:text-7xl font-bold text-charcoal mb-6"
-                        initial={{opacity: 0, y: 50}}
-                        animate={{opacity: 1, y: 0}}
-                        transition={{duration: 1.5, ease: "easeInOut"}}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.5, ease: "easeInOut" }}
                     >
                         Stay Informed. Stay Empowered.
                     </motion.h1>
                     <motion.p
                         className="text-lg text-muted-foreground mb-12"
-                        initial={{opacity: 0, y: 50}}
-                        animate={{opacity: 1, y: 0}}
-                        transition={{duration: 1.5, delay: 0.5, ease: "easeInOut"}}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
                     >
                         Your gateway to reliable and comprehensive news.
                     </motion.p>
                     <motion.div
-                        whileHover={{scale: 1.05}}
-                        whileTap={{scale: 0.95}}
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        transition={{duration: 0.5, delay: 1}}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 1 }}
                     >
                         <Link href="/news">
-                            <Button size="lg" className="bg-accent text-background  hover:bg-sky-blue px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <Button size="lg" className="bg-accent text-background hover:bg-sky-blue px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300">
                                 Explore Latest News
-                            </Button>   
+                            </Button>
                         </Link>
                     </motion.div>
                 </div>
             </section>
-                
+
+
             {/* Trending Section */}
             <section className="mb-24">
                 <h2 className="text-3xl font-semibold text-charcoal mb-12 flex items-center justify-center gap-x-2">
-                    <Settings className='text-muted-foreground'/> Trending Now <Settings className='text-muted-foreground'/>
+                    <Settings className='text-muted-foreground' /> Trending Now <Settings className='text-muted-foreground' />
                 </h2>
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{once: true}}
+                    viewport={{ once: true }}
                 >
                     {trendingTopics.map((topic, index) => (
                         <motion.div
                             key={index}
                             variants={cardVariants}
                             className="w-full"
-                            whileHover={{scale: 1.03}}
-                            transition={{duration: 0.3}}
+                            whileHover={{ scale: 1.03 }}
+                            transition={{ duration: 0.3 }}
                         >
                             <Card className="rounded-3xl shadow-md p-6 h-full">
                                 <CardHeader className='flex flex-row items-center gap-x-2'>
@@ -246,16 +258,16 @@ const LandingPage = () => {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{once: true}}
+                    viewport={{ once: true }}
                 >
                     <motion.div
                         variants={cardVariants}
                         className="w-full"
-                        whileHover={{scale: 1.05}}
-                        transition={{duration: 0.3}}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
                     >
                         <Card className="rounded-3xl shadow-md p-6 h-full flex flex-col items-center justify-center text-center">
-                           <Newspaper size={48} className='mb-4 text-sky-blue'/>
+                            <Newspaper size={48} className='mb-4 text-sky-blue' />
                             <CardTitle className="text-lg font-medium text-charcoal">Unbiased Reporting</CardTitle>
                             <CardContent className="text-muted-foreground">
                                 We deliver news with no slant, ensuring you get the facts straight.
@@ -265,11 +277,11 @@ const LandingPage = () => {
                     <motion.div
                         variants={cardVariants}
                         className="w-full"
-                        whileHover={{scale: 1.05}}
-                        transition={{duration: 0.3}}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
                     >
                         <Card className="rounded-3xl shadow-md p-6 h-full flex flex-col items-center justify-center text-center">
-                            <Lightbulb size={48} className='mb-4 text-sky-blue'/>
+                            <Lightbulb size={48} className='mb-4 text-sky-blue' />
                             <CardTitle className="text-lg font-medium text-charcoal">Expert Analysis</CardTitle>
                             <CardContent className="text-muted-foreground">
                                 Our experts provide deep insights to help you understand the complexities of the news.
@@ -279,50 +291,50 @@ const LandingPage = () => {
                     <motion.div
                         variants={cardVariants}
                         className="w-full"
-                        whileHover={{scale: 1.05}}
-                        transition={{duration: 0.3}}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
                     >
                         <Card className="rounded-3xl shadow-md p-6 h-full flex flex-col items-center justify-center text-center">
-                            <Users size={48} className='mb-4 text-sky-blue'/>
+                            <Users size={48} className='mb-4 text-sky-blue' />
                             <CardTitle className="text-lg font-medium text-charcoal">Community Focused</CardTitle>
                             <CardContent className="text-muted-foreground">We value our community and prioritize the news that matters to you.</CardContent>
                         </Card>
                     </motion.div>
                 </motion.div>
             </section>
-            
-            
+
+
             {/* Testimonial Slider */}
             <section className="mb-16">
-              <h2 className="text-3xl font-semibold text-charcoal mb-12 text-center">
-                What Our Readers Say
-              </h2>
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={currentTestimonial}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="flex justify-center"
-                >
-                  <Card className="max-w-xl w-full rounded-3xl shadow-md p-6 flex flex-col items-center justify-center text-center">
-                    <div className="mb-6">
-                      <Avatar className="w-24 h-24">
-                        <AvatarImage
-                          src={testimonials[currentTestimonial].avatar}
-                          alt={testimonials[currentTestimonial].author}
-                        />
-                        <AvatarFallback>{testimonials[currentTestimonial].author}</AvatarFallback>
-                      </Avatar>
-                    </div>
-                    <CardContent className="text-muted-foreground">
-                      <p className="mb-4 text-lg">{testimonials[currentTestimonial].text}</p>
-                      <p className="font-semibold">- {testimonials[currentTestimonial].author}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </AnimatePresence>
+                <h2 className="text-3xl font-semibold text-charcoal mb-12 text-center">
+                    What Our Readers Say
+                </h2>
+                <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                        key={currentTestimonial}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="flex justify-center"
+                    >
+                        <Card className="max-w-xl w-full rounded-3xl shadow-md p-6 flex flex-col items-center justify-center text-center">
+                            <div className="mb-6">
+                                <Avatar className="w-24 h-24">
+                                    <AvatarImage
+                                        src={testimonials[currentTestimonial].avatar}
+                                        alt={testimonials[currentTestimonial].author}
+                                    />
+                                    <AvatarFallback>{testimonials[currentTestimonial].author}</AvatarFallback>
+                                </Avatar>
+                            </div>
+                            <CardContent className="text-muted-foreground">
+                                <p className="mb-4 text-lg">{testimonials[currentTestimonial].text}</p>
+                                <p className="font-semibold">- {testimonials[currentTestimonial].author}</p>
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                </AnimatePresence>
             </section>
         </div>
     );
