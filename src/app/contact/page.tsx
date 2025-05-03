@@ -198,7 +198,7 @@ const ContactUsPage = () => {
 
           {/* Location Info */}
           <CardContent className="p-6">
-            <div className="w-full h-64 mb-4 rounded-md overflow-hidden">
+            <div className="w-full h-full mb-4 rounded-md overflow-hidden">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.7303875475304!2d2.1534933765886454!3d41.397985371325796!2m3!1f0!2f0!3f0!3m2!1i1024!2i764!4f13.1!3m3!1m2!1s0x12a4a2f8d2c17d%3A0xc817c276d67c1639!2s08025%20Barcelona%2C%20Spain!5e0!3m2!1sen!2sus!4v1708188338468!5m2!1sen!2sus"
                 className="w-full h-full border-0"
@@ -207,17 +207,7 @@ const ContactUsPage = () => {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
-            <div className="space-y-2">
-              <p className="text-muted-foreground">
-                <span className="font-medium">Address:</span> 08025 Barcelona, Spain
-              </p>
-              <p className="text-muted-foreground">
-                <span className="font-medium">Phone:</span> +34 666 66 66 66
-              </p>
-              <p className="text-muted-foreground">
-                <span className="font-medium">Email:</span> heronews.info@gmail.com
-              </p>
-            </div>
+       
           </CardContent>
         </Card>
       </motion.div>
